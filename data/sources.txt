@@ -1,0 +1,4 @@
+http://www.pkparaiso.com/xy/sprites_pokemon.php?cid=11#chunk11 - "animated gifs.zip"
+http://roestudios.co.uk/project/3d-pokemon-models/ - "3D models.zip"
+http://www.interactivemesh.org/models/jfx3dimporter.html - "JFX3DModelImporters_EA_2014-02-09.zip"
+http://www.interactivemesh.org/models/jfx3dbrowser.html - "ModelBrowserJFX-0_4_1.zip"
