@@ -1,0 +1,1 @@
+"C:/Program Files (x86)/Java/jre1.8.0_31/bin/java.exe" -Xmx1024m -Djavafx.animation.fullspeed=true -Dprism.dirtyopts=false -Dprism.verbose=false -Dquantum.multithreaded=true -cp .;jimModelBrowserJFX-0_4_1.jar com.interactivemesh.jfx.modelbrowser.ModelBrowserJFX 
