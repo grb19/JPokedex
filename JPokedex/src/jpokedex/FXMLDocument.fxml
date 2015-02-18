@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="jpokedex.FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="78.0" layoutY="110.0" minHeight="16" minWidth="69" />
+        <Button fx:id="button" layoutX="80.0" layoutY="52.0" onAction="#handleButtonAction" text="Click Me!" />
+    </children>
+</AnchorPane>
