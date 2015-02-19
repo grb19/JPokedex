@@ -2,15 +2,20 @@
     <description>Builds, tests, and runs the project JPokedex.</description>
     <import file="nbproject/build-impl.xml"/>
 	
-	<target name="-post-jfx-deploy">
 	
+	<!-- puts shortcut to the proper place-->
+	<target name="-post-jfx-deploy">
 	<replace file="${basedir}/dist/${application.title}.jnlp">
 		<replaceToken><![CDATA[</information>]]></replaceToken>
-		<replaceValue><![CDATA[  <shortcut><desktop/></shortcut> 
+		<replaceValue><![CDATA[  <icon href="../src/jpokedex/images/icon.ico"/>
+    <icon kind="shortcut" href="../src/jpokedex/images/icon.ico" width="256" height="256"/>
+  <shortcut><desktop/></shortcut> 
   </information>]]></replaceValue>
 	</replace>
-	
 	</target>
+	
+	
+	
     <!--
 
     There exist several targets which are by default empty and which can be 
