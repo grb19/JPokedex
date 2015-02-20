@@ -5,6 +5,8 @@
  */
 package jpokedex;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +26,8 @@ public class JPokedex extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        ResourceBundle pokeBundle = ResourceBundle.getBundle("jpokedex.bundles.Bundle", new Locale("en","US"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"), pokeBundle);
         Scene scene = new Scene(root);
         stage.setTitle("JPokedex");
         stage.setScene(scene);
