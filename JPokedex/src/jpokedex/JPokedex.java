@@ -32,7 +32,6 @@ public class JPokedex extends Application {
         stage.setTitle("JPokedex");
         stage.setScene(scene);
         stage.getIcons().add(new Image(JPokedex.class.getResourceAsStream("images/icon.png")));
-        //checkForShortcut();
         stage.show();
     }
 
@@ -43,23 +42,4 @@ public class JPokedex extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-    /*private void checkForShortcut() {
-        IntegrationService is;
-        try{
-            is=(IntegrationService) ServiceManager.lookup("javax.jnlp.IntegrationService");
-        }catch(UnavailableServiceException e){
-            return;
-        }
-        if(!is.hasDesktopShortcut()){
-            if(!is.requestShortcut(true, true, "JPokedex")){
-                System.out.println("shortcuts not created sucessfully");
-            }
-            else{
-                System.out.println("shortcuts created sucessfully");
-            }
-        }else{
-            System.out.println("already existent");
-        }
-    }*/
 }
