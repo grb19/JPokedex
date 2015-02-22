@@ -20,13 +20,13 @@ import javafx.stage.Stage;
  */
 public class JPokedex extends Application {
     /**
-     * start gets called, when application is launched
+     * Initial method call to start the application. 
      * @param stage the primarystage of the application
      * @throws Exception 
      */
     @Override
     public void start(Stage stage) throws Exception {
-        ResourceBundle pokeBundle = ResourceBundle.getBundle("jpokedex.bundles.Bundle", new Locale("en","US"));
+        ResourceBundle pokeBundle = ResourceBundle.getBundle("jpokedex.bundles.GuiBundle", new Locale("en","US"));
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"), pokeBundle);
         Scene scene = new Scene(root);
         stage.setTitle("JPokedex");

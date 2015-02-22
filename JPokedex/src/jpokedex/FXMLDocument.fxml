@@ -31,7 +31,7 @@
                                 </columns>
                               </TableView>
                            </content></Tab>
-                      <Tab text="Untitled Tab 2" />
+                      <Tab text="%moves.name" />
                     </tabs>
                   </TabPane>
                </children>

@@ -9,6 +9,6 @@ package jpokedex.database;
  *
  * @author grb19
  */
-public class PokedexDatabase {
+public class PokedexDatabase{
      
 }
