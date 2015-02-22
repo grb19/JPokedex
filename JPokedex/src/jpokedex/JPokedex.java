@@ -27,7 +27,8 @@ public class JPokedex extends Application {
     @Override
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public void start(Stage stage) throws Exception {
-        ResourceBundle pokeBundle = ResourceBundle.getBundle("jpokedex.bundles.GuiBundle", new Locale("en","US"));
+        Locale.setDefault(Locale.ENGLISH);
+        ResourceBundle pokeBundle = ResourceBundle.getBundle("jpokedex.i18n.GuiBundle", Locale.ENGLISH);
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"), pokeBundle);
         Scene scene = new Scene(root);
         stage.setTitle("JPokedex");
