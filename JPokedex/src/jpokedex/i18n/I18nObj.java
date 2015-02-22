@@ -5,6 +5,7 @@
  */
 package jpokedex.i18n;
 
+import java.util.HashMap;
 import jpokedex.exceptions.NotExistentException;
 import jpokedex.exceptions.AlreadyExistentException;
 import java.util.Locale;
@@ -27,6 +28,26 @@ public class I18nObj<T> {
     Map<Locale, T> map;
 
     /**
+     * Construct an internationalized object from one initial object. This
+     * object will be put to the default locale.
+     *
+     * @param obj object, that is to be added
+     */
+    public I18nObj(T obj) {
+        map = new HashMap<>();
+        if (obj != null) {
+            map.put(Locale.getDefault(), obj);
+        }
+    }
+
+    /**
+     * Construct an empty initial object.
+     */
+    public I18nObj() {
+        map = new HashMap<>();
+    }
+
+    /**
      * Adds the specified object to the internationalized object. Uses the
      * specified locale. If the object already exists, this method throws an
      * AlreadyExistentException. If you do not want that, use set() instead.
@@ -37,6 +58,9 @@ public class I18nObj<T> {
      * exists.
      */
     public void add(Locale locale, T obj) throws AlreadyExistentException {
+        if (locale == null || obj == null) {
+            return;
+        }
         if (map.containsKey(locale)) {
             throw new AlreadyExistentException("The locale " + locale.toString()
                     + ", to which you want to add data is already existent.");
@@ -68,6 +92,9 @@ public class I18nObj<T> {
      * @throws NotExistentException is thrown, when the object does not exist.
      */
     public T get(Locale locale) throws NotExistentException {
+        if (locale == null) {
+            throw new NotExistentException("Locale is null.");
+        }
         if (map.isEmpty()) {
             throw new NotExistentException("There is no entry in the map.");
         }
@@ -99,7 +126,9 @@ public class I18nObj<T> {
      * @param obj object, that is to be set.
      */
     public void set(Locale locale, T obj) {
-        map.put(locale, obj);
+        if (locale != null && obj != null) {
+            map.put(locale, obj);
+        }
     }
 
     /**
