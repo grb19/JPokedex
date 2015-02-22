@@ -25,6 +25,7 @@ public class JPokedex extends Application {
      * @throws Exception 
      */
     @Override
+    @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public void start(Stage stage) throws Exception {
         ResourceBundle pokeBundle = ResourceBundle.getBundle("jpokedex.bundles.GuiBundle", new Locale("en","US"));
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"), pokeBundle);
@@ -32,6 +33,12 @@ public class JPokedex extends Application {
         stage.setTitle("JPokedex");
         stage.setScene(scene);
         stage.getIcons().add(new Image(JPokedex.class.getResourceAsStream("images/icon.png")));
+        try{
+            Class.forName("javax.jnlp.ServiceManager");
+            new DesktopIntegrator();
+        }catch(Exception e){
+            System.out.println("DesktopIntegrator not started:"+e.getMessage());
+        }
         stage.show();
     }
 
