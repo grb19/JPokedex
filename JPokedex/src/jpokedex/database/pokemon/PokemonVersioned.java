@@ -9,6 +9,6 @@ package jpokedex.database.pokemon;
  *
  * @author grb19
  */
-public class SpecializedPokemon {
+public class PokemonVersioned {
     
 }
