@@ -5,6 +5,7 @@
  */
 package jpokedex.database.pokemon;
 
+import java.io.Serializable;
 import java.util.Locale;
 import jpokedex.exceptions.NotExistentException;
 import jpokedex.i18n.I18nObj;
@@ -16,7 +17,7 @@ import jpokedex.i18n.I18nObj;
  *
  * @author grb19
  */
-public class Pokemon {
+public class Pokemon implements Serializable{
 
     I18nObj<String> name;
 

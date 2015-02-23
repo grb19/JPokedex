@@ -5,11 +5,11 @@
  */
 package jpokedex.i18n;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import jpokedex.exceptions.NotExistentException;
 import jpokedex.exceptions.AlreadyExistentException;
 import java.util.Locale;
-import java.util.Map;
 
 /**
  * This class is used to give an easy method to save, set and retrieve
@@ -19,13 +19,13 @@ import java.util.Map;
  * @author grb19
  * @param <T> This is the type the information is given in.
  */
-public class I18nObj<T> {
+public class I18nObj<T> implements Serializable {
 
     /**
      * Stores the values of the internationalized object and its corresponding
      * locales.
      */
-    Map<Locale, T> map;
+    HashMap<Locale, T> map;
 
     /**
      * Construct an internationalized object from one initial object. This

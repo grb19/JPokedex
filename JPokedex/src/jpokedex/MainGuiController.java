@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author grb19
  */
-public class FXMLDocumentController implements Initializable {
+public class MainGuiController implements Initializable {
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
     
