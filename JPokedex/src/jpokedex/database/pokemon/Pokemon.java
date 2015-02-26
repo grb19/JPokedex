@@ -18,6 +18,7 @@ import jpokedex.i18n.I18nObj;
  * @author grb19
  */
 public class Pokemon implements Serializable{
+    private static final long serialVersionUID = 8904839225518892520L;
 
     I18nObj<String> name;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jpokedex.database.pokemon;
+package jpokedex.database.areas;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author grb19
  */
-public class PokedexDatabase implements Serializable{
-    private static final long serialVersionUID = -4334813600148239951L;
-     
+public abstract class Area implements Serializable {
+    private static final long serialVersionUID = 1191789003460068055L;
+    
 }

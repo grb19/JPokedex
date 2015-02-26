@@ -20,6 +20,7 @@ import java.util.Locale;
  * @param <T> This is the type the information is given in.
  */
 public class I18nObj<T> implements Serializable {
+    private static final long serialVersionUID = 7038162095269898022L;
 
     /**
      * Stores the values of the internationalized object and its corresponding

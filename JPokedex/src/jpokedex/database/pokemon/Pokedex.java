@@ -8,8 +8,6 @@ package jpokedex.database.pokemon;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jpokedex.database.games.Game;
 import jpokedex.exceptions.NotExistentException;
 import jpokedex.i18n.I18nObj;
@@ -19,6 +17,7 @@ import jpokedex.i18n.I18nObj;
  * @author grb19
  */
 public class Pokedex implements Serializable{
+    private static final long serialVersionUID = 8800837889562679853L;
     private I18nObj<String> name;
     private ArrayList<Game> games;
     private HashMap<Integer, Pokemon> pokedexEntries;

@@ -5,10 +5,13 @@
  */
 package jpokedex.database.pokemon;
 
+import java.io.Serializable;
+
 /**
  *
  * @author grb19
  */
-public class PokemonVersioned {
+public class PokemonVersioned implements Serializable{
+    private static final long serialVersionUID = -8430071758286804328L;
     
 }
