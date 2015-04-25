@@ -4,6 +4,7 @@
 	
 	
 	<!-- puts shortcut to the proper place-->
+	<!--
 	<target name="-post-jfx-deploy">
 	<replace file="${basedir}/dist/${application.title}.jnlp">
 		<replaceToken><![CDATA[</information>]]></replaceToken>
@@ -13,7 +14,7 @@
   </information>]]></replaceValue>
 	</replace>
 	</target>
-	
+	-->
 	
 	
     <!--
