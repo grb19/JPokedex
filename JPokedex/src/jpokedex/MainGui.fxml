@@ -1,42 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jpokedex.MainGuiController">
    <children>
-      <SplitPane dividerPositions="0.6634050880626223" layoutX="91.0" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="743.0" prefWidth="1017.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TabPane layoutX="198.0" layoutY="156.0" prefHeight="766.0" prefWidth="740.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <tabs>
-                      <Tab text="Untitled Tab 1" />
-                      <Tab text="Untitled Tab 2" />
-                    </tabs>
-                  </TabPane>
+                  <SplitPane dividerPositions="0.6634050880626223" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TabPane layoutX="198.0" layoutY="156.0" prefHeight="766.0" prefWidth="740.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <tabs>
+                                  <Tab text="Untitled Tab 1" />
+                                  <Tab text="Untitled Tab 2" />
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="766.0" prefWidth="727.0">
+                           <children>
+                              <TabPane layoutX="38.0" layoutY="245.0" prefHeight="766.0" prefWidth="276.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <tabs>
+                                  <Tab text="%pokemon.name">
+                                       <content>
+                                          <TableView prefHeight="200.0" prefWidth="200.0">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="C1" />
+                                              <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                          </TableView>
+                                       </content>
+                                    </Tab>
+                                  <Tab text="%moves.name" />
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="766.0" prefWidth="727.0">
+          <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" prefWidth="160.0">
                <children>
-                  <TabPane layoutX="38.0" layoutY="245.0" prefHeight="766.0" prefWidth="276.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <tabs>
-                      <Tab text="%pokemon.name">
-                           <content>
-                              <TableView prefHeight="200.0" prefWidth="200.0">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
-                                </columns>
-                              </TableView>
-                           </content></Tab>
-                      <Tab text="%moves.name" />
-                    </tabs>
-                  </TabPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="statusLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
-        </items>
-      </SplitPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

@@ -31,6 +31,7 @@ public class JPokedex extends Application {
     @Override
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public void start(Stage stage) throws Exception {
+        long clock = System.currentTimeMillis();
         Locale.setDefault(Locale.ENGLISH);
         ResourceBundle pokeBundle = null;
         try {
@@ -39,18 +40,22 @@ public class JPokedex extends Application {
             System.out.println("Bundle not found. Exiting");
             System.exit(-1);
         }
-        Parent root = FXMLLoader.load(getClass().getResource("MainGui.fxml"), pokeBundle);//loads the gui
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainGui.fxml"), pokeBundle);
+        Parent root = (Parent) fxmlLoader.load();//loads the gui
+        MainGuiController mgc = (MainGuiController) fxmlLoader.getController();
+        //mgc.initialize(null, pokeBundle);
         Scene scene = new Scene(root);
         stage.setTitle("JPokedex");
         stage.setScene(scene);
         stage.getIcons().add(new Image(JPokedex.class.getResourceAsStream("images/icon.png")));
         try {
             Class.forName("javax.jnlp.ServiceManager");
-            new DesktopIntegrator();//starts the desktop integrator. Used to ask for shortcuts.
+            new DesktopIntegrator();  //starts the desktop integrator. Used to ask for shortcuts.
         } catch (Exception e) {
             System.out.println("DesktopIntegrator not started:" + e.getMessage());
         }
         stage.show();
+        mgc.setStatus("Time to load[ms]: " + (System.currentTimeMillis()-clock));
     }
 
     /**
