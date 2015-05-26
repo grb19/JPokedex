@@ -25,14 +25,14 @@ public class MainGui {
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public MainGui(Stage stage) throws IOException{
         @SuppressWarnings("UnusedAssignment")
-        ResourceBundle pokeBundle = null;
+        ResourceBundle guiBundle = null;
         try {
-            pokeBundle = ResourceBundle.getBundle("jpokedex.i18n.bundles.GuiBundle", Locale.ENGLISH);
+            guiBundle = ResourceBundle.getBundle("jpokedex.i18n.bundles.GuiBundle", Locale.ENGLISH);
         } catch (MissingResourceException e) {
             System.err.println("Bundle not found. Exiting" + e.getMessage());
             System.exit(-1);
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainGui.fxml"), pokeBundle);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainGui.fxml"), guiBundle);
         Parent root;
         root = (Parent) fxmlLoader.load(); //loads the gui
         MainGuiController mgc = (MainGuiController) fxmlLoader.getController();
@@ -42,6 +42,6 @@ public class MainGui {
         stage.setScene(scene);
         stage.getIcons().add(new Image(JPokedex.class.getResourceAsStream("images/icon.png")));
         stage.show();
-        mgc.setStatus("JPokedex successfully started");
+        mgc.setStatus(guiBundle.getString("statusmessages.sucessfullstart"));
     }
 }
