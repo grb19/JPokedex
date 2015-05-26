@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp spec="6.0+" codebase="file:/G:/documents/Pokedex/JPokedex/dist/" href="JPokedex.jnlp">
+<jnlp spec="6.0+" codebase="file:/C:/Users/grb19/Documents/Pokedex/JPokedex/dist/" href="JPokedex.jnlp">
   <information>
     <title>JPokedex</title>
     <vendor>grb19</vendor>
@@ -22,7 +22,7 @@
     <java href="http://java.sun.com/products/autodl/j2se" version="1.6+"/>
     <jar href="JPokedex.jar" download="eager" main="false"/>
   </resources>
-  <applet-desc name="JPokedex" width="1024" height="768" main-class="com.javafx.main.NoJavaFXFallback"  >
+  <applet-desc name="JPokedex" width="1024" height="700" main-class="com.javafx.main.NoJavaFXFallback"  >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
   <javafx-desc main-class="jpokedex.JPokedex"/>

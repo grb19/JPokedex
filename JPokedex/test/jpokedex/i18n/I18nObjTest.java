@@ -6,8 +6,6 @@
 package jpokedex.i18n;
 
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jpokedex.exceptions.AlreadyExistentException;
 import jpokedex.exceptions.NotExistentException;
 import org.junit.After;

@@ -5,6 +5,8 @@
  */
 package jpokedex;
 
+import java.io.IOException;
+import jpokedex.gui.MainGuiController;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -14,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import jpokedex.gui.MainGui;
 
 /**
  * JPokedex is the main app of the JPokedex project.
@@ -25,38 +28,21 @@ public class JPokedex extends Application {
     /**
      * Initial method call to start the application.
      *
-     * @param stage the primarystage of the application
-     * @throws Exception
+     * @param stage the primary stage of the application
+     * @throws java.io.IOException
      */
     @Override
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws IOException {
         //clock = System.currentTimeMillis();
         Locale.setDefault(Locale.ENGLISH);
-        @SuppressWarnings("UnusedAssignment")
-        ResourceBundle pokeBundle = null;
-        try {
-            pokeBundle = ResourceBundle.getBundle("jpokedex.i18n.bundles.GuiBundle", Locale.ENGLISH);
-        } catch (MissingResourceException e) {
-            System.err.println("Bundle not found. Exiting" + e.getMessage());
-            System.exit(-1);
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainGui.fxml"), pokeBundle);
-        Parent root = (Parent) fxmlLoader.load();//loads the gui
-        MainGuiController mgc = (MainGuiController) fxmlLoader.getController();
-        //mgc.initialize(null, pokeBundle);
-        Scene scene = new Scene(root);
-        stage.setTitle("JPokedex");
-        stage.setScene(scene);
-        stage.getIcons().add(new Image(JPokedex.class.getResourceAsStream("images/icon.png")));
+        new MainGui(stage);
         try {
             Class.forName("javax.jnlp.ServiceManager");
             new DesktopIntegrator();  //starts the desktop integrator. Used to ask for shortcuts.
         } catch (Exception e) {
             System.err.println("DesktopIntegrator not started:" + e.getMessage());
         }
-        stage.show();
-        mgc.setStatus("JPokedex successfully started");
     }
 
     /**
