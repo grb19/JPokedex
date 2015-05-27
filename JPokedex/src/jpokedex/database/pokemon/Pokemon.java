@@ -21,8 +21,7 @@ public class Pokemon implements Serializable{
     private static final long serialVersionUID = 8904839225518892520L;
 
     I18nObj<String> name;
-
-    
+ 
     public Pokemon(String name){
         this.name = new I18nObj<>(name);
     }
