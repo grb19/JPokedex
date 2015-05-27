@@ -6,15 +6,8 @@
 package jpokedex;
 
 import java.io.IOException;
-import jpokedex.gui.MainGuiController;
 import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import jpokedex.gui.MainGui;
 
