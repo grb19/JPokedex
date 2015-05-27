@@ -36,7 +36,7 @@ public class JPokedex extends Application {
     public void start(Stage stage) throws IOException {
         //clock = System.currentTimeMillis();
         Locale.setDefault(Locale.ENGLISH);
-        new MainGui(stage);
+        new MainGui(stage); //starts the main gui.
         try {
             Class.forName("javax.jnlp.ServiceManager");
             new DesktopIntegrator();  //starts the desktop integrator. Used to ask for shortcuts.
