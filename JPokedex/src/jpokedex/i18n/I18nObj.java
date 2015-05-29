@@ -20,6 +20,7 @@ import java.util.Locale;
  * @param <T> This is the type the information is given in.
  */
 public class I18nObj<T> implements Serializable {
+
     private static final long serialVersionUID = 7038162095269898022L;
 
     /**
@@ -30,14 +31,14 @@ public class I18nObj<T> implements Serializable {
 
     /**
      * Construct an internationalized object from one initial object. This
-     * object will be put to the default locale.
+     * object will be put to the default locale from I18nManager.
      *
      * @param obj object, that is to be added
      */
     public I18nObj(T obj) {
         map = new HashMap<>();
         if (obj != null) {
-            map.put(Locale.getDefault(), obj);
+            map.put(I18nManager.getDefaultLocale(), obj);
         }
     }
 
@@ -59,8 +60,11 @@ public class I18nObj<T> implements Serializable {
      * exists.
      */
     public void add(Locale locale, T obj) throws AlreadyExistentException {
-        if (locale == null || obj == null) {
+        if (obj == null) {
             return;
+        }
+        if (locale == null) {
+            locale = I18nManager.getDefaultLocale();
         }
         if (map.containsKey(locale)) {
             throw new AlreadyExistentException("The locale " + locale.toString()
@@ -71,53 +75,16 @@ public class I18nObj<T> implements Serializable {
 
     /**
      * Adds the specified object to the internationalized object. Uses the
-     * default locale. If the object already exists, this method throws an
-     * AlreadyExistentException. If you do not want that, use set() instead.
+     * default locale from I18nManager. If the object already exists, this
+     * method throws an AlreadyExistentException. If you do not want that, use
+     * set() instead.
      *
      * @param obj Object, that is to be inserted.
      * @throws AlreadyExistentException is thrown, when the object already
      * exists.
      */
     public void add(T obj) throws AlreadyExistentException {
-        add(Locale.getDefault(), obj);
-    }
-
-    /**
-     * Gets the object of the specified locale. If the object corresponding to
-     * the specified locale is not found, it uses the default locale. If this is
-     * also not found, it uses the first entry of the map. If the map is empty,
-     * this throws a NotExistentException.
-     *
-     * @param locale the locale, under which the object should be found.
-     * @return the object that corresponds to the specified locale.
-     * @throws NotExistentException is thrown, when the object does not exist.
-     */
-    public T get(Locale locale) throws NotExistentException {
-        if (locale == null) {
-            throw new NotExistentException("Locale is null.");
-        }
-        if (map.isEmpty()) {
-            throw new NotExistentException("There is no entry in the map.");
-        }
-        if (map.containsKey(locale)) {
-            return map.get(locale);
-        }
-        if (map.containsKey(Locale.getDefault())) {
-            return map.get(Locale.getDefault());
-        }
-        return map.get(map.keySet().iterator().next());
-    }
-
-    /**
-     * Gets the object of the default locale. If the object corresponding to the
-     * specified locale is not found, it uses the first entry of the map. If the
-     * map is empty, this throws a NotExistentException.
-     *
-     * @return the object that corresponds to the default locale.
-     * @throws NotExistentException is thrown, when the object does not exist.
-     */
-    public T get() throws NotExistentException {
-        return get(Locale.getDefault());
+        add(I18nManager.getDefaultLocale(), obj);
     }
 
     /**
@@ -127,7 +94,10 @@ public class I18nObj<T> implements Serializable {
      * @param obj object, that is to be set.
      */
     public void set(Locale locale, T obj) {
-        if (locale != null && obj != null) {
+        if (obj != null) {
+            if (locale == null) {
+                locale = I18nManager.getDefaultLocale();
+            }
             map.put(locale, obj);
         }
     }
@@ -138,6 +108,87 @@ public class I18nObj<T> implements Serializable {
      * @param obj object, that is to be set.
      */
     public void set(T obj) {
-        set(Locale.getDefault(), obj);
+        set(I18nManager.getDefaultLocale(), obj);
+    }
+
+    /**
+     * Gets the object of the specified locale. If the object corresponding to
+     * the specified locale is not found, it throws a NotExistentException.
+     *
+     * @param locale the locale, under which the object should be found.
+     * @return the object that corresponds to the specified locale.
+     * @throws NotExistentException is thrown, when the object does not exist.
+     */
+    public T get(Locale locale) throws NotExistentException {
+        if (locale == null) {
+            locale = I18nManager.getDefaultLocale();
+        }
+        if (map.containsKey(locale)) {
+            return map.get(locale);
+        }
+        throw new NotExistentException("There is no entry in the map with the"
+                + "specified locale.");
+    }
+
+    /**
+     * Gets the object of the default locale from I18nManager. If that object is
+     * not found, this throws a NotExistentException.
+     *
+     * @return the object that corresponds to the default locale.
+     * @throws NotExistentException is thrown, when the object does not exist.
+     */
+    public T get() throws NotExistentException {
+        return get(I18nManager.getDefaultLocale());
+    }
+
+    /**
+     * Gets the object of the specified locale. If the object corresponding to
+     * the specified locale is not found, the preferred languages from the
+     * I18nManager are used to determine suitable alternatives. If none of these
+     * languages exist, this returns the first element added to the object. If
+     * no object has ever been added, this returns a NotExistentException.
+     *
+     * @param locale the locale, under which the object should be found.
+     * @return the object that corresponds to the specified locale.
+     * @throws NotExistentException is thrown, when the internal map does not
+     * contain an object, and thus no object has ever been added to this
+     * I18nObject.
+     */
+    public T getFailSafe(Locale locale) throws NotExistentException {
+        if (locale == null) {
+            locale = I18nManager.getDefaultLocale();
+        }
+        if (map.isEmpty()) {
+            throw new NotExistentException("Map is empty.");
+        }
+
+        if (map.containsKey(locale)) {
+            return map.get(locale);
+        }
+
+        for (Locale loc : I18nManager.getPreferredLocales()) {
+            if (map.containsKey(loc)) {
+                return map.get(loc);
+            }
+        }
+
+        return map.get(map.keySet().iterator().next());
+    }
+
+    /**
+     * Gets the object of the default locale from the I18nManager. If the object
+     * corresponding to the default locale is not found, the preferred languages
+     * from the I18nManager are used to determine suitable alternatives. If none
+     * of these languages exist, this returns the first element added to the
+     * object. If no object has ever been added, this returns a
+     * NotExistentException.
+     *
+     * @return the object that corresponds to the specified locale.
+     * @throws NotExistentException is thrown, when the internal map does not
+     * contain an object, and thus no object has ever been added to this
+     * I18nObject.
+     */
+    public T getFailSafe() throws NotExistentException {
+        return getFailSafe(I18nManager.getDefaultLocale());
     }
 }

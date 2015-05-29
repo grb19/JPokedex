@@ -52,6 +52,6 @@ public class Pokemon implements Serializable{
      * @return the searched name.
      */
     public String getName() {
-        return getName(Locale.getDefault());
+        return getName(null);
     }
 }

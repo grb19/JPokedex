@@ -6,7 +6,6 @@
 package jpokedex;
 
 import java.io.IOException;
-import java.util.Locale;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jpokedex.gui.MainGui;
@@ -17,7 +16,7 @@ import jpokedex.gui.MainGui;
  * @author grb19
  */
 public class JPokedex extends Application {
-    
+
     /**
      * Initial method call to start the application.
      *
@@ -28,7 +27,6 @@ public class JPokedex extends Application {
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public void start(Stage stage) throws IOException {
         //clock = System.currentTimeMillis();
-        Locale.setDefault(Locale.ENGLISH);
         new MainGui(stage); //starts the main gui.
         try {
             Class.forName("javax.jnlp.ServiceManager");

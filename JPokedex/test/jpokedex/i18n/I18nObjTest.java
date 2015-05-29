@@ -28,7 +28,7 @@ public class I18nObjTest {
 
     @BeforeClass
     public static void setUpClass() {
-        Locale.setDefault(Locale.ENGLISH);
+        I18nManager.setDefaultLocale(Locale.ENGLISH);
     }
 
     @AfterClass
@@ -84,27 +84,32 @@ public class I18nObjTest {
      */
     @Test
     public void testGet_Locale() {
-        String s="";
+        String s = "";
         try {
-            s=i18nString.get(Locale.ENGLISH);
+            s = i18nString.get(Locale.ENGLISH);
         } catch (NotExistentException ex) {
             fail("failed getting string");
         }
         assertEquals(s, "Hello");
         try {
-            s=i18nString.get(Locale.FRENCH);
+            s = i18nString.getFailSafe(Locale.FRENCH);
         } catch (NotExistentException ex) {
             fail("failed getting string");
         }
-        assertEquals(s, "Hello");
-        i18nString.set(Locale.GERMAN,"Hallo");
         try {
-            s=i18nString.get(Locale.GERMAN);
+            s = i18nString.get(Locale.FRENCH);
+            fail("got string from French, even though, this should not have happened.");
+        } catch (NotExistentException ex) {
+
+        }
+        i18nString.set(Locale.GERMAN, "Hallo");
+        try {
+            s = i18nString.get(Locale.GERMAN);
         } catch (NotExistentException ex) {
             fail("failed getting string");
         }
         assertEquals(s, "Hallo");
-        
+
     }
 
     /**
@@ -112,9 +117,9 @@ public class I18nObjTest {
      */
     @Test
     public void testGet() {
-        String s="";
+        String s = "";
         try {
-            s=i18nString.get();
+            s = i18nString.get();
         } catch (NotExistentException ex) {
             fail("failed getting string");
         }
