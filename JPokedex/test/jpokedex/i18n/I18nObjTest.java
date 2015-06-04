@@ -56,6 +56,8 @@ public class I18nObjTest {
             fail("Could not add Hallo to german locale.");
         }
         try {
+            // this should fail, since in @Before, the standard object is 
+            // already registered for the "en" locale.
             i18nString.add(new Locale("en"), "Hello");
         } catch (AlreadyExistentException e) {
             System.out.println("success");
