@@ -15,22 +15,22 @@ import jpokedex.database.userdatabase.UserDatabase;
  * This class manages the database of the application.
  * @author grb19
  */
-public class Database implements Serializable{
+class Database implements Serializable{
     private static final long serialVersionUID = 5520959720687483041L;
     
     /**
      * This holds the database of pokemon. Only a single instant is required
      */
-    PokemonDatabase pokemonDatabase;
+    private PokemonDatabase pokemonDatabase;
     
     /**
      * This holds the UserDatabases. Since multiple users can exist,
      * multiple databases are necessary.
      */
-    ArrayList<UserDatabase> userDatabases;
+    private ArrayList<UserDatabase> userDatabases;
     
     /**
      * This holds the users.
      */
-    ArrayList<User> users;
+    private ArrayList<User> users;
 }

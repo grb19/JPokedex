@@ -5,11 +5,32 @@
  */
 package jpokedex.database;
 
+import jpokedex.gui.GuiController;
+
 /**
  * This class is used as main referral to access, add, modify or remove objects
  * from the database.
+ *
  * @author grb19
  */
-public class DatabaseController {
-    
+public final class DatabaseController {
+
+    /**
+     * Holds the instance of the database.
+     */
+    private final Database database;
+    private final DatabaseIO databaseIO;
+    private final GuiController guiController;
+
+    /**
+     * Constructor of DatabaseController. Will load Database.
+     *
+     * @param guiController
+     */
+    public DatabaseController(GuiController guiController) {
+        this.guiController = guiController;
+        databaseIO = new DatabaseIODesktop();
+        database = databaseIO.loadDatabase();
+        guiController.setBundleStatus("statusmessages.successfulDatabaseLoad");
+    }
 }

@@ -8,7 +8,6 @@ package jpokedex;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import jpokedex.gui.MainGui;
 
 /**
  * JPokedex is the main app of the JPokedex project.
@@ -26,14 +25,7 @@ public class JPokedex extends Application {
     @Override
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public void start(Stage stage) throws IOException {
-        //clock = System.currentTimeMillis();
-        new MainGui(stage); //starts the main gui.
-        try {
-            Class.forName("javax.jnlp.ServiceManager");
-            new DesktopIntegrator();  //starts the desktop integrator. Used to ask for shortcuts.
-        } catch (Exception e) {
-            System.err.println("DesktopIntegrator not started: " + e.getMessage());
-        }
+        new JPokedexFactory(stage);
     }
 
     /**
