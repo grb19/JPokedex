@@ -32,7 +32,7 @@ public class JPokedex extends Application {
             Class.forName("javax.jnlp.ServiceManager");
             new DesktopIntegrator();  //starts the desktop integrator. Used to ask for shortcuts.
         } catch (Exception e) {
-            System.err.println("DesktopIntegrator not started:" + e.getMessage());
+            System.err.println("DesktopIntegrator not started: " + e.getMessage());
         }
     }
 
