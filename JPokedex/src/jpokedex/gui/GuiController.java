@@ -12,7 +12,7 @@ import jpokedex.database.DatabaseController;
  *
  * @author grb19
  */
-public interface GuiController {    
+public interface GuiController {
     /**
      * Sets a status message, could be displayed somehow or written to a log.
      * @param status 
@@ -33,5 +33,15 @@ public interface GuiController {
      */
     public void setDatabaseController(DatabaseController dbController);
     
+    /**
+     * Sets the bundle. Needed to switch languages.
+     * @param bundle 
+     */
     public void setBundle(ResourceBundle bundle);
+    
+    /**
+     * Sets a progress of a progress bar or something similar.
+     * @param progress 
+     */
+    public void setProgress(double progress);
 }

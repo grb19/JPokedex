@@ -6,25 +6,29 @@
 package jpokedex;
 
 import java.io.IOException;
+import javafx.application.Application;
 import javafx.stage.Stage;
 import jpokedex.database.DatabaseController;
 import jpokedex.gui.GuiController;
 import jpokedex.gui.GuiFactory;
-import jpokedex.gui.desktop.MainGui;
+import jpokedex.gui.desktop.PreloaderController;
 
 /**
  *
  * @author grb19
  */
 public class JPokedexFactory {
-
-    @SuppressWarnings("ResultOfObjectAllocationIgnored")
+    GuiController guiController;
+    DatabaseController dbController;
+    
+    /*@SuppressWarnings("ResultOfObjectAllocationIgnored")
     JPokedexFactory(Stage stage) throws IOException {
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        GuiFactory guiFactory = new GuiFactory(stage); // initializes the gui
-        GuiController guiController = guiFactory.getGuiController();
-        DatabaseController dbController = new DatabaseController(guiController);
-        guiController.setDatabaseController(dbController);
+        
+    }*/
+
+    JPokedexFactory(Application app) {
+        guiController = new PreloaderController(app);
+        dbController = new DatabaseController(guiController);
         initializeDesktopIntegration();
     }
 
@@ -36,6 +40,13 @@ public class JPokedexFactory {
         } catch (Exception e) {
             System.err.println("DesktopIntegrator not started: " + e.getMessage());
         }
+    }
+
+    void initializeStage(Stage stage) throws IOException {
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        GuiFactory guiFactory = new GuiFactory(stage); // initializes the gui
+        guiController = guiFactory.getGuiController();
+        guiController.setDatabaseController(dbController);
     }
     
 }

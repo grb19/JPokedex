@@ -6,7 +6,6 @@
 package jpokedex.gui.desktop;
 
 import java.net.URL;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import jpokedex.database.DatabaseController;
 import jpokedex.gui.GuiController;
-import jpokedex.i18n.I18nManager;
 
 /**
  *
@@ -33,7 +31,7 @@ public class MainGuiController implements Initializable, GuiController {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        resources = rb;
     }
     
     @Override
@@ -58,6 +56,11 @@ public class MainGuiController implements Initializable, GuiController {
     @Override
     public void setBundle(ResourceBundle bundle){
         this.bundle = bundle;
+    }
+
+    @Override
+    public void setProgress(double progress) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

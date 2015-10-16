@@ -20,7 +20,7 @@ public final class DatabaseController {
      */
     private final Database database;
     private final DatabaseIO databaseIO;
-    private final GuiController guiController;
+    private GuiController guiController;
 
     /**
      * Constructor of DatabaseController. Will load Database.
@@ -29,8 +29,15 @@ public final class DatabaseController {
      */
     public DatabaseController(GuiController guiController) {
         this.guiController = guiController;
+        guiController.setProgress(0.);
         databaseIO = new DatabaseIODesktop();
         database = databaseIO.loadDatabase();
-        guiController.setBundleStatus("statusmessages.successfulDatabaseLoad");
+        System.out.println("db loaded");
+        this.guiController.setProgress(1.);
+        //guiController.setBundleStatus("statusmessages.successfulDatabaseLoad");
+    }
+    
+    public void setGuiController(GuiController guiController){
+        this.guiController = guiController;
     }
 }

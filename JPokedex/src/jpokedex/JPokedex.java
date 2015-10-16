@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author grb19
  */
 public class JPokedex extends Application {
-
+    JPokedexFactory jPokedexFactory;
     /**
      * Initial method call to start the application.
      *
@@ -25,7 +25,12 @@ public class JPokedex extends Application {
     @Override
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public void start(Stage stage) throws IOException {
-        new JPokedexFactory(stage);
+        jPokedexFactory.initializeStage(stage);
+    }
+    
+    @Override
+    public void init() throws Exception{
+        jPokedexFactory = new JPokedexFactory(this);
     }
 
     /**
