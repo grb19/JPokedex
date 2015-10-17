@@ -30,7 +30,8 @@ public final class DatabaseController {
     public DatabaseController(GuiController guiController) {
         this.guiController = guiController;
         guiController.setProgress(0.);
-        databaseIO = new DatabaseIODesktop();
+        guiController.setBundleStatus("statusmessages.DatabaseLoading");
+        databaseIO = new DatabaseIODesktop(guiController);
         database = databaseIO.loadDatabase();
         System.out.println("db loaded");
         this.guiController.setProgress(1.);
