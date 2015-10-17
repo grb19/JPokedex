@@ -43,7 +43,6 @@ public class JPokedexFactory {
     }
 
     void initializeStage(Stage stage) throws IOException {
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
         GuiFactory guiFactory = new GuiFactory(stage); // initializes the gui
         guiController = guiFactory.getGuiController();
         guiController.setDatabaseController(dbController);

@@ -11,6 +11,7 @@ import javafx.application.Preloader;
 import javafx.application.Preloader.PreloaderNotification;
 import jpokedex.database.DatabaseController;
 import jpokedex.gui.GuiController;
+import jpokedex.i18n.I18nManager;
 
 /**
  *
@@ -19,29 +20,31 @@ import jpokedex.gui.GuiController;
 public class PreloaderController implements GuiController {
 
     Application app;
+    ResourceBundle bundle;
 
     public PreloaderController(Application app) {
         this.app = app;
+        bundle = ResourceBundle.getBundle("jpokedex.i18n.bundles.GuiBundle", I18nManager.getDefaultLocale());
     }
 
     @Override
     public void setStatus(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        app.notifyPreloader(new jpokedexpreloader.ProgressTextNotification(status));
     }
 
     @Override
     public void setBundleStatus(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setStatus(bundle.getString(status));
     }
 
     @Override
     public void setDatabaseController(DatabaseController dbController) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // won't care about database (at least for now)
     }
 
     @Override
     public void setBundle(ResourceBundle bundle) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.bundle = bundle;
     }
 
     @Override
