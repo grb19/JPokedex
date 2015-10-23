@@ -20,11 +20,6 @@ import jpokedex.gui.desktop.PreloaderController;
 public class JPokedexFactory {
     GuiController guiController;
     DatabaseController dbController;
-    
-    /*@SuppressWarnings("ResultOfObjectAllocationIgnored")
-    JPokedexFactory(Stage stage) throws IOException {
-        
-    }*/
 
     JPokedexFactory(Application app) {
         guiController = new PreloaderController(app);

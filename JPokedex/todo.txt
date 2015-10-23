@@ -1,0 +1,5 @@
+* make guicontrolling static
+    + easier sending of messages etc. 
+    + only one is needed anyways
+* databases -> has multiple objects of database type
+    * 
