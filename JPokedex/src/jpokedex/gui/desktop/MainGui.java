@@ -5,7 +5,6 @@
  */
 package jpokedex.gui.desktop;
 
-import jpokedex.gui.desktop.MainGuiController;
 import java.io.IOException;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -15,15 +14,15 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import jpokedex.JPokedex;
-import jpokedex.gui.GuiController;
 import jpokedex.i18n.I18nManager;
+import jpokedex.gui.GuiController;
 
 /**
  *
  * @author grb19
  */
 public class MainGui {
-    private MainGuiController mgc;
+    private final MainGuiController mgc;
     
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public MainGui(Stage stage) throws IOException {

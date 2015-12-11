@@ -9,7 +9,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jpokedex.gui.GuiController;
+import jpokedex.gui.GuiControllerManager;
 
 /**
  *
@@ -32,7 +31,7 @@ class DatabaseIODesktop implements DatabaseIO {
     private final String absolutePath;
     private final String databaseName = "database.jpdb";
     
-    public DatabaseIODesktop(GuiController guiController) {
+    public DatabaseIODesktop() {
         absolutePath = System.getProperty("user.home") + jPokedexName;
         File theDir = new File(absolutePath);
         if (!theDir.exists()) {
@@ -52,6 +51,7 @@ class DatabaseIODesktop implements DatabaseIO {
                 return (Database) input.readObject();
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(DatabaseIODesktop.class.getName()).log(Level.SEVERE, null, ex);
+                GuiControllerManager.setStatus("loading saved database failed. creating new one");
                 return new Database();
             }
         } else {
@@ -69,6 +69,7 @@ class DatabaseIODesktop implements DatabaseIO {
             output.writeObject(database);
         } catch (IOException ex) {
             Logger.getLogger(DatabaseIODesktop.class.getName()).log(Level.SEVERE, null, ex);
+            GuiControllerManager.setStatus("saving database failed.");
         }
     }
 }

@@ -8,10 +8,8 @@ package jpokedex.gui.desktop;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.application.Preloader;
-import javafx.application.Preloader.PreloaderNotification;
-import jpokedex.database.DatabaseController;
-import jpokedex.gui.GuiController;
 import jpokedex.i18n.I18nManager;
+import jpokedex.gui.GuiController;
 
 /**
  *
@@ -35,11 +33,6 @@ public class PreloaderController implements GuiController {
     @Override
     public void setBundleStatus(String status) {
         setStatus(bundle.getString(status));
-    }
-
-    @Override
-    public void setDatabaseController(DatabaseController dbController) {
-        // won't care about database (at least for now)
     }
 
     @Override

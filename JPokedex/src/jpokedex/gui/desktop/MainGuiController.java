@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TabPane;
 import jpokedex.database.DatabaseController;
 import jpokedex.gui.GuiController;
 
@@ -19,16 +20,19 @@ import jpokedex.gui.GuiController;
  * @author grb19
  */
 public class MainGuiController implements Initializable, GuiController {
-    @FXML // ResourceBundle that was given to the FXMLLoader
-    private ResourceBundle resources;
-    @FXML // Label used to display the current status
-    private Label statusLabel;
-    @FXML // ProgressBar, used to display work in progress
-    private ProgressBar progressBar;
+    @FXML 
+    private ResourceBundle resources; ///< ResourceBundle that was given to the FXMLLoader
+    @FXML 
+    private Label statusLabel; ///< Label used to display the current status
+    @FXML 
+    private ProgressBar progressBar; ///< ProgressBar, used to display work in progress
+    @FXML 
+    private TabPane tabPaneMain; ///< TabPane that defines the main view components
+    @FXML
+    private TabPane tabPaneRight; ///< TabPane on the right.
     
     ResourceBundle bundle;
-    protected DatabaseController databaseController;
-    
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         resources = rb;
@@ -37,11 +41,6 @@ public class MainGuiController implements Initializable, GuiController {
     @Override
     public void setStatus(String text){
         statusLabel.setText(text);
-    }
-    
-    @Override
-    public void setDatabaseController(DatabaseController dbController){
-        databaseController = dbController;
     }
 
     @Override

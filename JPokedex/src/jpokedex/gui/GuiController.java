@@ -28,12 +28,6 @@ public interface GuiController {
     public void setBundleStatus(String status);
     
     /**
-     * Sets the dbController. Implementing class should store this somehow.
-     * @param dbController 
-     */
-    public void setDatabaseController(DatabaseController dbController);
-    
-    /**
      * Sets the bundle. Needed to switch languages.
      * @param bundle 
      */

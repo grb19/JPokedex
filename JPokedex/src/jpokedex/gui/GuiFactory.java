@@ -15,16 +15,13 @@ import jpokedex.gui.desktop.MainGui;
  * @author grb19
  */
 public class GuiFactory {
-    private final GuiController guiController;
-    
-    @SuppressWarnings("ResultOfObjectAllocationIgnored")
-    public GuiFactory(Stage stage) throws IOException {
-        MainGui gui = new MainGui(stage);
-        guiController = gui.getController(); //starts the main gui.
+    public static void initialize(Stage stage) throws IOException {
+        initializeDesktop(stage);
     }
 
-    public GuiController getGuiController() {
-        return guiController;
+    private static void initializeDesktop(Stage stage) throws IOException {
+        MainGui gui = new MainGui(stage);//starts the main gui.
+        GuiControllerManager.registerController(gui.getController());
     }
     
 }

@@ -9,9 +9,9 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import jpokedex.database.DatabaseController;
-import jpokedex.gui.GuiController;
 import jpokedex.gui.GuiFactory;
 import jpokedex.gui.desktop.PreloaderController;
+import jpokedex.gui.GuiController;
 
 /**
  *
@@ -23,7 +23,8 @@ public class JPokedexFactory {
 
     JPokedexFactory(Application app) {
         guiController = new PreloaderController(app);
-        dbController = new DatabaseController(guiController);
+        
+        dbController = new DatabaseController();
         initializeDesktopIntegration();
     }
 
@@ -37,10 +38,9 @@ public class JPokedexFactory {
         }
     }
 
+    @SuppressWarnings("ResultOfObjectAllocationIgnored")
     void initializeStage(Stage stage) throws IOException {
-        GuiFactory guiFactory = new GuiFactory(stage); // initializes the gui
-        guiController = guiFactory.getGuiController();
-        guiController.setDatabaseController(dbController);
+        GuiFactory.initialize(stage); // initializes the gui
     }
     
 }
