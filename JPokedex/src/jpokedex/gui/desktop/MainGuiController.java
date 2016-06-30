@@ -9,37 +9,39 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import jpokedex.database.DatabaseController;
 import jpokedex.gui.GuiController;
 
 /**
  *
  * @author grb19
  */
-public class MainGuiController implements Initializable, GuiController {
-    @FXML 
+public class MainGuiController implements Initializable, GuiController, GuiDock {
+
+    @FXML
     private ResourceBundle resources; ///< ResourceBundle that was given to the FXMLLoader
-    @FXML 
+    @FXML
     private Label statusLabel; ///< Label used to display the current status
-    @FXML 
+    @FXML
     private ProgressBar progressBar; ///< ProgressBar, used to display work in progress
-    @FXML 
+    @FXML
     private TabPane tabPaneMain; ///< TabPane that defines the main view components
     @FXML
     private TabPane tabPaneRight; ///< TabPane on the right.
-    
+
     ResourceBundle bundle;
-        
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         resources = rb;
     }
-    
+
     @Override
-    public void setStatus(String text){
+    public void setStatus(String text) {
         statusLabel.setText(text);
     }
 
@@ -47,19 +49,24 @@ public class MainGuiController implements Initializable, GuiController {
     public void setBundleStatus(String status) {
         setStatus(bundle.getString(status));
     }
-    
-    /**
-     * Sets the bundle
-     * @param bundle
-     */
+
     @Override
-    public void setBundle(ResourceBundle bundle){
+    public void setBundle(ResourceBundle bundle) {
         this.bundle = bundle;
     }
 
     @Override
     public void setProgress(double progress) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
+    @Override
+    public void attachToPlane(int id, GuiAttachable attachable) {
+        //TODO: extend for different id's
+        Tab tab = new Tab();
+        tab.setText(attachable.getName());
+        tab.setContent(attachable.getNode());
+        tabPaneMain.getTabs().add(tab);
+    }
+
 }

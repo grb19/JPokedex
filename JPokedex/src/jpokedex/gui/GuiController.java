@@ -6,36 +6,40 @@
 package jpokedex.gui;
 
 import java.util.ResourceBundle;
-import jpokedex.database.DatabaseController;
 
 /**
  *
  * @author grb19
  */
 public interface GuiController {
+
     /**
      * Sets a status message, could be displayed somehow or written to a log.
-     * @param status 
+     *
+     * @param status
      */
     public void setStatus(String status);
-    
+
     /**
-     * Sets a status message, interprets the text as bundle values. 
-     * Could be displayed somehow or written to a log.
-     * 
-     * @param status 
+     * Sets a status message, interprets the text as bundle values. Could be
+     * displayed somehow or written to a log.
+     *
+     * @param status
      */
     public void setBundleStatus(String status);
-    
+
     /**
      * Sets the bundle. Needed to switch languages.
-     * @param bundle 
+     *
+     * @param bundle
      */
     public void setBundle(ResourceBundle bundle);
-    
+
     /**
      * Sets a progress of a progress bar or something similar.
-     * @param progress 
+     *
+     * @param progress
      */
     public void setProgress(double progress);
+    
 }
