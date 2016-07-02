@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jpokedex.gui.packages;
+package jpokedex.gui.desktop;
 
 /**
  *
  * @author grb19
  */
-public abstract class GuiPackage {
-
-    public GuiPackage() {
-    }
-
+public interface MenuDock {
+    /**
+     * Attaches a Menu to a menuBar.
+     * @param attachable MenuAttachable to attach
+     */
+    public void attachToMenu(MenuAttachable attachable);
 }

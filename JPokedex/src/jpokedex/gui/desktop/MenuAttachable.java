@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jpokedex.gui.packages.Viewer3D;
+package jpokedex.gui.desktop;
 
-import jpokedex.gui.packages.GuiPackage;
+import java.util.Collection;
+import javafx.scene.control.MenuItem;
 
 /**
  *
  * @author grb19
  */
-public class Viewer3D extends GuiPackage{
-    public Viewer3D(){
-    }
+public interface MenuAttachable {
+    public Collection<MenuItem> getMenuItems();
+
+    public String getMainMenuName();
 }

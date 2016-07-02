@@ -9,8 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -20,7 +21,7 @@ import jpokedex.gui.GuiController;
  *
  * @author grb19
  */
-public class MainGuiController implements Initializable, GuiController, GuiDock {
+public class MainGuiController implements Initializable, GuiController, GuiDock, MenuDock {
 
     @FXML
     private ResourceBundle resources; ///< ResourceBundle that was given to the FXMLLoader
@@ -32,6 +33,8 @@ public class MainGuiController implements Initializable, GuiController, GuiDock 
     private TabPane tabPaneMain; ///< TabPane that defines the main view components
     @FXML
     private TabPane tabPaneRight; ///< TabPane on the right.
+    @FXML
+    private MenuBar mainMenuBar; ///< TabPane on the right.
 
     ResourceBundle bundle;
 
@@ -67,6 +70,21 @@ public class MainGuiController implements Initializable, GuiController, GuiDock 
         tab.setText(attachable.getName());
         tab.setContent(attachable.getNode());
         tabPaneMain.getTabs().add(tab);
+    }
+
+    @Override
+    public void attachToMenu(MenuAttachable attachable) {
+        for (Menu m : mainMenuBar.getMenus()) {
+            if (m.getText() == null ? attachable.getMainMenuName() == null : m.getText().equals(attachable.getMainMenuName())) {
+                m.getItems().addAll(attachable.getMenuItems());
+                return;
+            }
+        }
+        // if not attached, add menu.
+        Menu menu = new Menu(attachable.getMainMenuName());
+        menu.getItems().addAll(attachable.getMenuItems());
+        mainMenuBar.getMenus().add(menu);
+
     }
 
 }

@@ -8,6 +8,7 @@ package jpokedex.gui;
 import java.io.IOException;
 import javafx.stage.Stage;
 import jpokedex.gui.desktop.MainGui;
+import jpokedex.packages.packagemanager.PackageManager;
 
 /**
  * Creates links between gui and controller. for multiple different factories:
@@ -22,6 +23,7 @@ public class GuiFactory {
     private static void initializeDesktop(Stage stage) throws IOException {
         MainGui gui = new MainGui(stage);//starts the main gui.
         GuiControllerManager.registerController(gui.getController());
+        PackageManager packageManager = new PackageManager();
     }
     
 }
