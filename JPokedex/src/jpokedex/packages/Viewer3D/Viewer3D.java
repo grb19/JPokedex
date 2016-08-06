@@ -7,13 +7,13 @@ package jpokedex.packages.Viewer3D;
 
 import javafx.scene.Node;
 import jpokedex.gui.desktop.GuiAttachable;
-import jpokedex.packages.Package;
+import jpokedex.packages.JPokedexPackage;
 
 /**
  *
  * @author grb19
  */
-public class Viewer3D extends Package implements GuiAttachable{
+public class Viewer3D extends JPokedexPackage implements GuiAttachable{
     public Viewer3D(){
     }
 
